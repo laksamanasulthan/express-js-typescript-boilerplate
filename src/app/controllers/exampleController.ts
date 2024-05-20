@@ -1,22 +1,20 @@
 import { Request, Response } from 'express';
-import { User } from '../../entities/User';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { plainToClass } from 'class-transformer';
 import { validate } from 'class-validator';
-import { autoInjectable } from 'tsyringe';
-import { ExampleService } from 'app/services/exampleServices';
 
-@autoInjectable()
-export class ExampleController {
+export const ExampleController = {
 
-    constructor(
-        private exampleService: ExampleService
-    ) { }
+    async index(req: Request, res: Response) {
+        const message = { "message": "Hello World" };
+        return res.json(message);
+    },
 
-    async index(res: Response, req: Request) {
 
-        const message = await this.exampleService.getMessage();
+    async indexlain(req: Request, res: Response) {
+        const message = { "message": "Cek" };
         return res.json(message);
     }
 }
+

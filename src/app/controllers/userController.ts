@@ -2,13 +2,8 @@ import { Request, Response } from 'express';
 import { User } from '../../entities/User';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { validate } from 'class-validator';
 
-export class UserController {
-
-    constructor(
-
-    ) { }
+export const UserController = {
 
     async register(req: Request, res: Response) {
         const { name, email, password } = req.body;
@@ -19,7 +14,7 @@ export class UserController {
         await user.save();
 
         res.send(user);
-    }
+    },
 
     async login(req: Request, res: Response) {
         const { email, password } = req.body;
