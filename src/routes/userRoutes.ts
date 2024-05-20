@@ -10,9 +10,14 @@ router.post('/register', [
     body('password').isLength({ min: 6 })
 ], register);
 
+
 router.post('/login', [
     body('email').isEmail(),
     body('password').isLength({ min: 6 })
 ], login);
+
+router.get('/', function (req, res) {
+    return res.json({ "aHelloworld": "Helddddlowowrd" });
+});
 
 export default router;
