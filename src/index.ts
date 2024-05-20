@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
-import userRoutes from './routes/userRoutes';
+import routes from './routes/routes';
 import { DatabaseConnection } from './config/database';
 
 
@@ -11,7 +11,7 @@ app.use(cors());
 app.use(helmet());
 app.use(express.json());
 
-app.use('/api/users', userRoutes);
+app.use('/api', routes);
 
 DatabaseConnection.initialize().then(async () => {
     console.log('Connected to the database');
