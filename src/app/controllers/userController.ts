@@ -2,29 +2,38 @@ import { Request, Response } from 'express';
 import { User } from '../../entities/User';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { validate } from 'class-validator';
 
-export const register = async (req: Request, res: Response) => {
-    const { name, email, password } = req.body;
+export class UserController {
 
-    const hashedPassword = await bcrypt.hash(password, 10);
-    const user = User.create({ name, email, password: hashedPassword });
+    constructor(
 
-    await user.save();
+    ) { }
 
-    res.send(user);
-};
+    async register(req: Request, res: Response) {
+        const { name, email, password } = req.body;
 
-export const login = async (req: Request, res: Response) => {
-    const { email, password } = req.body;
-    const user = await User.findOne({ where: { email } });
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const user = User.create({ name, email, password: hashedPassword });
 
-    if (!user || !(await bcrypt.compare(password, user.password))) {
-        return res.status(400).send('Invalid credentials');
+        await user.save();
+
+        res.send(user);
     }
 
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!, {
-        expiresIn: '1h',
-    });
+    async login(req: Request, res: Response) {
+        const { email, password } = req.body;
+        const user = await User.findOne({ where: { email } });
 
-    res.send({ token });
-};
+        if (!user || !(await bcrypt.compare(password, user.password))) {
+            return res.status(400).send('Invalid credentials');
+        }
+
+        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!, {
+            expiresIn: '1h',
+        });
+
+        res.send({ token });
+    }
+}
+
