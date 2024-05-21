@@ -1,6 +1,6 @@
-#Express JS Boilerplate for Generate Code.
+# Express JS Boilerplate for Generate Code.
 
-##Express.js with Typescript and ORM (Typeorm: Postgre & Mysql Driver)
+## Express.js with Typescript and ORM (Typeorm: Postgre & Mysql Driver)
 
 Feature
 
@@ -20,7 +20,7 @@ Feature
 
 The main purpose of this repo are to fasten development process. No Need for Structuring Project. All of Dependecy is avaliable in this repo.
 
-##Usage
+## Usage
 
 ```git
 git clone https://github.com/laksamanasulthan/express-js-typescript-boilerplate.git
