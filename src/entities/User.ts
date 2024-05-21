@@ -4,16 +4,17 @@ import { Length, IsEmail } from 'class-validator';
 @Entity()
 export class User extends BaseEntity {
   @PrimaryGeneratedColumn()
-    id!: number;
+  id!: number;
 
   @Column()
-    @Length(1, 255)
-    name!: string;
+  @Length(1, 255)
+  name!: string;
 
   @Column()
-    @IsEmail()
-    email!: string;
+  @IsEmail()
+  email!: string;
 
   @Column()
-    password!: string;
+  password!: string;
+
 }
