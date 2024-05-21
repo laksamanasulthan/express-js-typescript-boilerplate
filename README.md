@@ -28,6 +28,11 @@ git clone https://github.com/laksamanasulthan/express-js-typescript-boilerplate.
 
 ```bash
 copy .env.example and rename to copied file to .env. Change value inside .env according to your Database Configuration
+
+```
+
+```bash
+change SYNC in .env to true, so to Entities will doing auto-migration into database
 ```
 
 ```bash
