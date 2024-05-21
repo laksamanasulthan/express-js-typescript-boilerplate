@@ -10,7 +10,7 @@ export const DatabaseConnection = new DataSource({
     database: env.DATABASE_NAME,
     entities: ['src/entities/*.ts'],
     synchronize: env.SYNC,
-    logging: true,
+    logging: ["query", "error"],
     migrations: [],
     subscribers: [],
 })

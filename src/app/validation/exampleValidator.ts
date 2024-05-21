@@ -1,4 +1,4 @@
-import { ValidationChain, body } from "express-validator"
+import { ValidationChain, body, param } from "express-validator"
 
 
 export const exampleValidator: ValidationChain[] = [
