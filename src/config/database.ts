@@ -1,5 +1,7 @@
 import { DataSource } from 'typeorm';
+import * as path from 'path';
 import { env } from './env';
+import migration from './migration';
 
 export const DatabaseConnection = new DataSource({
     type: 'mysql',
@@ -8,7 +10,7 @@ export const DatabaseConnection = new DataSource({
     username: env.DATABASE_USERNAME,
     password: env.DATABASE_PASSWORD,
     database: env.DATABASE_NAME,
-    entities: ['src/entities/*.ts'],
+    entities: migration,
     synchronize: env.SYNC,
     logging: ["query", "error"],
     migrations: [],
