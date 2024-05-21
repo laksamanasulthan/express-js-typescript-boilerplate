@@ -1,4 +1,4 @@
-# Express JS Boilerplate for Generate Code.
+# Express JS Boilerplate.
 
 ## Express.js with Typescript and ORM (Typeorm: Postgre & Mysql Driver)
 
@@ -40,5 +40,19 @@ change SYNC in .env to true, so to Entities will doing auto-migration into datab
 npm i
 
 #run in watch mode
-npm run dev
+npm run watch
+```
+
+## Deployment
+
+If you want deploy this project. There is few necessery step to ensure the program can be run in your favorite shared hosting or (even better) your personal VPS.
+
+```bash
+#Build The App
+npm build
+
+#And then you can upload the dist folder to your shared hosting/VPS
+
+#Run this command to serve application to your shared hosting/VPS
+npm run start
 ```
