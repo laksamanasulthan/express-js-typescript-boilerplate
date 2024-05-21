@@ -3,6 +3,7 @@ import cors from 'cors';
 import helmet from 'helmet';
 import routes from './routes/routes';
 import { DatabaseConnection } from './config/database';
+import { loggerMiddleware } from './app/middlewares/loggerMiddleware';
 
 
 const app = express();
@@ -10,6 +11,7 @@ const app = express();
 app.use(cors());
 app.use(helmet());
 app.use(express.json());
+app.use(loggerMiddleware);
 
 app.use('/api', routes);
 

@@ -1,5 +1,4 @@
 import { DataSource } from 'typeorm';
-import { User } from '../entities/User';
 import { env } from './env';
 
 export const DatabaseConnection = new DataSource({
