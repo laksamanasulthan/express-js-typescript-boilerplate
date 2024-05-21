@@ -48,10 +48,10 @@ npm run watch
 If you want deploy this project. There is few necessery step to ensure the program can be run in your favorite shared hosting or (even better) your personal VPS.
 
 ```bash
-#Build The App
+#Build Your app First
 npm build
 
-#And then you can upload the dist folder to your shared hosting/VPS
+#And then you can upload the project to your shared hosting/VPS
 
 #Run this command to serve application to your shared hosting/VPS
 npm run start
