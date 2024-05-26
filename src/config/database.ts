@@ -1,10 +1,9 @@
-import { DataSource } from 'typeorm';
-import * as path from 'path';
-import { env } from './env';
-import migration from './migration';
+import { DataSource } from "typeorm";
+import { env } from "../env";
+import migration from "./migration";
 
 export const DatabaseConnection = new DataSource({
-    type: 'mysql',
+    type: "mysql",
     host: env.DATABASE_HOST,
     port: env.DATABASE_PORT,
     username: env.DATABASE_USERNAME,
@@ -15,4 +14,4 @@ export const DatabaseConnection = new DataSource({
     logging: ["query", "error"],
     migrations: [],
     subscribers: [],
-})
+});

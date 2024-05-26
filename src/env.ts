@@ -1,5 +1,5 @@
-import { bool, cleanEnv, host, num, port, str, url } from "envalid";
-import dotenv from 'dotenv';
+import dotenv from "dotenv";
+import { bool, cleanEnv, host, port, str } from "envalid";
 
 dotenv.config();
 
@@ -11,4 +11,3 @@ export const env = cleanEnv(process.env, {
     DATABASE_PORT: port(),
     SYNC: bool(),
 });
-
