@@ -1,10 +1,9 @@
-import { Request, Response } from 'express';
-import { User } from '../../entities/User';
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
+import bcrypt from "bcrypt";
+import { Request, Response } from "express";
+import jwt from "jsonwebtoken";
+import { User } from "../../entities/User";
 
 export const UserController = {
-
     async register(req: Request, res: Response) {
         const { name, email, password } = req.body;
 
@@ -21,14 +20,13 @@ export const UserController = {
         const user = await User.findOne({ where: { email } });
 
         if (!user || !(await bcrypt.compare(password, user.password))) {
-            return res.status(400).send('Invalid credentials');
+            return res.status(400).send("Invalid credentials");
         }
 
         const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!, {
-            expiresIn: '1h',
+            expiresIn: "1h",
         });
 
         res.send({ token });
-    }
-}
-
+    },
+};
