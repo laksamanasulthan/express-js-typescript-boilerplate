@@ -56,3 +56,10 @@ npm build
 #Run this command to serve application to your shared hosting/VPS
 npm run start
 ```
+
+TO DO :
+
+-   Auth jwt passport
+-   Test
+-   Custom CLI
+-   Middleware Auth
