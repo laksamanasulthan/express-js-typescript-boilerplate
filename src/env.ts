@@ -10,4 +10,5 @@ export const env = cleanEnv(process.env, {
     DATABASE_HOST: host(),
     DATABASE_PORT: port(),
     SYNC: bool(),
+    JWT_SECRET: str(),
 });
