@@ -4,7 +4,8 @@ import helmet from "helmet";
 import passport from "passport";
 import { loggerMiddleware } from "./app/middlewares/loggerMiddleware";
 import { DatabaseConnection } from "./config/database";
-import routes from "./routes/routes";
+import { setupSwagger } from "./config/swagger";
+import { setupRouter } from "./routes/routes";
 
 const app = express();
 
@@ -14,7 +15,8 @@ app.use(express.json());
 app.use(passport.initialize());
 app.use(loggerMiddleware);
 
-app.use("/api", routes);
+setupRouter(app);
+setupSwagger(app);
 
 DatabaseConnection.initialize()
     .then(async () => {
