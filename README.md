@@ -31,6 +31,10 @@ copy .env.example and rename to copied file to .env ,Change value inside .env ac
 ```
 
 ```bash
+Make sure you already create Database before running the Program
+```
+
+```bash
 change SYNC in .env to true, so to Entities will doing auto-migration into database
 ```
 
