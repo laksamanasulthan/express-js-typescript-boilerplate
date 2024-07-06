@@ -1,5 +1,9 @@
 import { Router } from "express";
 import { AuthController } from "../app/controllers/authController";
+import {
+    loginValidator,
+    registerValidator,
+} from "../app/validation/authValidatior";
 
 const authRouter = Router();
 /**
@@ -35,7 +39,7 @@ const authRouter = Router();
  *       400:
  *         description: Invalid credentials
  */
-authRouter.post("/login", AuthController.login);
+authRouter.post("/login", loginValidator, AuthController.login);
 
 /**
  * @swagger
@@ -50,9 +54,12 @@ authRouter.post("/login", AuthController.login);
  *           schema:
  *             type: object
  *             required:
+ *               - name
  *               - email
  *               - password
  *             properties:
+ *               name:
+ *                  type: string
  *               email:
  *                 type: string
  *               password:
@@ -63,8 +70,6 @@ authRouter.post("/login", AuthController.login);
  *       400:
  *         description: Invalid input
  */
-authRouter.post("/register", AuthController.register);
-
-authRouter.post("/logout", AuthController.logout);
+authRouter.post("/register", registerValidator, AuthController.register);
 
 export default authRouter;

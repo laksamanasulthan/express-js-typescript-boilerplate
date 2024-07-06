@@ -1,5 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
-import { Length, IsEmail } from 'class-validator';
+import { IsEmail, Length } from "class-validator";
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class User extends BaseEntity {
@@ -15,6 +15,6 @@ export class User extends BaseEntity {
     email!: string;
 
     @Column()
+    @Length(1, 255)
     password!: string;
-
 }

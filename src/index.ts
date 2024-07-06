@@ -1,9 +1,9 @@
 import cors from "cors";
 import express from "express";
 import helmet from "helmet";
-import passport from "passport";
 import { loggerMiddleware } from "./app/middlewares/loggerMiddleware";
 import { DatabaseConnection } from "./config/database";
+import passport from "./config/passport";
 import { setupSwagger } from "./config/swagger";
 import { setupRouter } from "./routes/routes";
 

@@ -2,7 +2,7 @@ import { Router } from "express";
 import { ExampleController } from "../app/controllers/exampleController";
 import { exampleMiddleware } from "../app/middlewares/exampleMiddleware";
 import { exampleValidator } from "../app/validation/exampleValidator";
-import { idValidator } from "../app/validation/paramsValidatos";
+import { idValidator } from "../app/validation/paramsValidator";
 
 const exampleRouter = Router();
 /**

@@ -15,7 +15,6 @@ const options: StrategyOptions = {
 
 const jwtStrategy = new JwtStrategy(options, (payload, done) => {
     try {
-        // Here you can fetch the user from the database if needed
         done(null, payload);
     } catch (error) {
         done(error, false);

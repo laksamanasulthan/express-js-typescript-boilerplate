@@ -1,26 +1,64 @@
+import { compare, hash } from "bcryptjs";
+import dotenv from "dotenv";
 import { Request, Response } from "express";
+import { matchedData, validationResult } from "express-validator";
+import { sign } from "jsonwebtoken";
+import { User } from "../../entities/User";
+
+dotenv.config();
 
 export const AuthController = {
-    async login(req: Request, res: Response) {},
-    async register(req: Request, res: Response) {},
-    async logout(req: Request, res: Response) {},
+    async login(req: Request, res: Response) {
+        const error = validationResult(req);
 
-    // async register(req: Request, res: Response) {
-    //     const { name, email, password } = req.body;
-    //     const hashedPassword = await bcrypt.hash(password, 10);
-    //     const user = User.create({ name, email, password: hashedPassword });
-    //     await user.save();
-    //     res.send(user);
-    // },
-    // async login(req: Request, res: Response) {
-    //     const { email, password } = req.body;
-    //     const user = await User.findOne({ where: { email } });
-    //     if (!user || !(await bcrypt.compare(password, user.password))) {
-    //         return res.status(400).send("Invalid credentials");
-    //     }
-    //     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET!, {
-    //         expiresIn: "1h",
-    //     });
-    //     res.send({ token });
-    // },
+        if (!error.isEmpty()) {
+            return res.status(400).json({ errors: error.array() });
+        }
+
+        const data = matchedData(req);
+
+        const findUser = await User.findOneBy({ email: data.email });
+
+        if (!findUser) {
+            return res
+                .status(400)
+                .json({ errors: "Email Credentials not Found" });
+        }
+
+        const passwordComparison = await compare(
+            data.password,
+            findUser.password
+        );
+
+        if (!passwordComparison) {
+            return res.status(400).json({ errors: "Wrong Password" });
+        }
+
+        const jwtToken = sign(
+            { email: findUser.email },
+            process.env.JWT_SECRET as string,
+            { expiresIn: "2h" }
+        );
+
+        return res.status(200).json({ jwtToken });
+    },
+
+    async register(req: Request, res: Response) {
+        const error = validationResult(req);
+
+        if (!error.isEmpty()) {
+            return res.status(400).json({ errors: error.array() });
+        }
+
+        const data = matchedData(req);
+
+        const user = new User();
+        user.name = data.name;
+        user.email = data.email;
+        user.password = await hash(data.password, 10);
+
+        const save = await user.save();
+
+        return res.status(201).json(save);
+    },
 };

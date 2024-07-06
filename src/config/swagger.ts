@@ -17,6 +17,20 @@ const options = {
                 description: "API Endpoint",
             },
         ],
+        components: {
+            securitySchemes: {
+                bearerAuth: {
+                    type: "http",
+                    scheme: "bearer",
+                    bearerFormat: "JWT",
+                },
+            },
+        },
+        security: [
+            {
+                bearerAuth: [],
+            },
+        ],
     },
     apis: ["./src/routes/*.ts"], // files containing annotations as above
 };

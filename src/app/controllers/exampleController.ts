@@ -21,7 +21,7 @@ export const ExampleController = {
 
         const save = await example.save();
 
-        return res.json(save);
+        return res.status(200).json(save);
     },
 
     async show(req: Request, res: Response) {
