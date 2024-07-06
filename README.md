@@ -5,17 +5,16 @@
 Feature
 
 -   Typescript
--   bcrypt
+-   bcryptjs
 -   class-validator
 -   class-transformer
 -   dotenv
--   cors
 -   express
 -   reflect-metadata
 -   jsonwebtoken
 -   express-validator
 -   typeorm
--   postgre
+-   postgresql
 -   mysql
 
 The main purpose of this repo are to fasten development process. No Need for Structuring Project. All of Dependecy is avaliable in this repo.
@@ -27,7 +26,7 @@ git clone https://github.com/laksamanasulthan/express-js-typescript-boilerplate.
 ```
 
 ```bash
-copy .env.example and rename to copied file to .env. Change value inside .env according to your Database Configuration
+copy .env.example and rename to copied file to .env ,Change value inside .env according to your Database Configuration
 
 ```
 
@@ -59,7 +58,6 @@ npm run start
 
 TO DO :
 
--   Auth jwt passport
 -   Test
 -   Custom CLI
 -   Middleware Auth

@@ -5,7 +5,7 @@ import { Example } from "../../entities/Example";
 export const ExampleController = {
     async index(req: Request, res: Response) {
         const index = await Example.find({});
-        return res.json(index);
+        return res.status(200).json(index);
     },
 
     async store(req: Request, res: Response) {
@@ -21,7 +21,7 @@ export const ExampleController = {
 
         const save = await example.save();
 
-        return res.status(200).json(save);
+        return res.status(201).json(save);
     },
 
     async show(req: Request, res: Response) {
@@ -51,7 +51,7 @@ export const ExampleController = {
             }
         );
 
-        return res.json(save);
+        return res.status(200).json(save);
     },
 
     async delete(req: Request, res: Response) {
@@ -63,6 +63,6 @@ export const ExampleController = {
 
         const deleteById = await Example.delete({ id: data.id });
 
-        return res.json(deleteById);
+        return res.status(200).json(deleteById);
     },
 };

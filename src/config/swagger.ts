@@ -9,7 +9,7 @@ const options = {
             title: "Express API with Swagger",
             version: "1.0.0",
             description:
-                "This is a simple CRUD API application made with Express and documented with Swagger",
+                "This is a simple Boilerplate API made with Express and documented with Swagger",
         },
         servers: [
             {
