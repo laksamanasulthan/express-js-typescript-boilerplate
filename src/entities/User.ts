@@ -17,13 +17,16 @@ export class User extends BaseEntity {
     @Length(1, 255)
     name!: string;
 
-    @Column()
+    @Column({ unique: true })
     @IsEmail()
     email!: string;
 
     @Column()
     @Length(1, 255)
     password!: string;
+
+    @Column({ type: "longtext", nullable: true })
+    token!: string;
 
     @CreateDateColumn({
         type: "timestamp",

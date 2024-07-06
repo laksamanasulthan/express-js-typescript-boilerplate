@@ -40,7 +40,18 @@ export const AuthController = {
             { expiresIn: "2h" }
         );
 
-        return res.status(200).json({ jwtToken });
+        const updateToken = User.update(
+            { id: findUser.id },
+            {
+                token: jwtToken,
+            }
+        );
+
+        return res.status(200).json({
+            token: jwtToken,
+            email: findUser.email,
+            id: findUser.id,
+        });
     },
 
     async register(req: Request, res: Response) {
@@ -59,6 +70,10 @@ export const AuthController = {
 
         const save = await user.save();
 
-        return res.status(201).json(save);
+        return res.status(201).json({
+            id: save.id,
+            name: save.name,
+            email: save.email,
+        });
     },
 };
